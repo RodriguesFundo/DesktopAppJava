@@ -253,6 +253,8 @@ public class GestaoDeContasJFrame extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_btnAddActionPerformed
 
+    
+    
         //Botao para actualizar
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
         try {
@@ -306,7 +308,8 @@ public class GestaoDeContasJFrame extends javax.swing.JFrame {
             contas.remove(tuplaSelecionada());
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(rootPane, "Sem nehum registro", "Empty",JOptionPane.ERROR_MESSAGE);
-        }
+        } finally{
+        ActualizarDados();}
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     public static void main(String args[]) {
