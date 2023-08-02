@@ -1,5 +1,7 @@
-package POOA.GestaoEstudantes;
+package POOA.GestaoEstudantes.View;
 
+import POOA.GestaoEstudantes.Control.ControllerEstudante;
+import POOA.GestaoEstudantes.Model.Estudante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,28 +17,32 @@ import javax.swing.table.DefaultTableModel;
 public class CRUDEstudante extends javax.swing.JFrame implements ActionListener, MouseListener {
 
     public CRUDEstudante() {
+        
         initComponents();
         btnEditar.setEnabled(false);
         btnEliminar.setEnabled(false);
-        
-        
         tableResult.addMouseListener(new MouseAdapter(){
-                    @Override
-                    public void mouseClicked(MouseEvent e){
-                        try {
-                            Estudante estudante = controllerEstudante.list().get(tableResult.getSelectedRow());
-                            txtCodigo.setText(String.valueOf(estudante.getCodigo()));
-                            txtNome.setText(estudante.getNome());
-                            txtNota1.setText(String.valueOf(estudante.getNota1()));
-                            txtNota2.setText(String.valueOf(estudante.getNota2()));
-                            txtCodigo.setEnabled(false);
-                            btnEditar.setEnabled(true);
-                            btnEliminar.setEnabled(true);
-                        } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(null, "Ocorreu um erro. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
-                });
+        
+            @Override
+            public void mouseClicked(MouseEvent e){
+                try {
+                    Estudante estudante = controllerEstudante.list().get(tableResult.getSelectedRow());
+            
+                    txtCodigo.setText(String.valueOf(estudante.getCodigo()));
+                    txtNome.setText(estudante.getNome());
+                    txtNota1.setText(String.valueOf(estudante.getNota1()));
+                    txtNota2.setText(String.valueOf(estudante.getNota2()));
+                    txtCodigo.setEnabled(false);
+                    btnEditar.setEnabled(true);
+                    btnEliminar.setEnabled(true);
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, 
+                            "Ocorreu um erro. Tente novamente.", "Erro",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
     
     ControllerEstudante controllerEstudante = new ControllerEstudante();
@@ -257,19 +263,23 @@ public class CRUDEstudante extends javax.swing.JFrame implements ActionListener,
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         try {
             if(txtCodigo.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira o codigo de estudnte", TAG, HEIGHT);                
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Insira o codigo de estudnte", TAG, HEIGHT);                
                 return;
             }
             if(txtNome.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira o nome do estudante", TAG, HEIGHT);
+                JOptionPane.showMessageDialog(rootPane,
+                        "Insira o nome do estudante", TAG, HEIGHT);
                 return;
             }
             if(txtNota1.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira a primeira nota", TAG, HEIGHT);
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Insira a primeira nota", TAG, HEIGHT);
                 return;
             }
             if(txtNota2.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira a segunda nota", TAG, HEIGHT);
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Insira a segunda nota", TAG, HEIGHT);
                 return;
             }
             
@@ -291,7 +301,8 @@ public class CRUDEstudante extends javax.swing.JFrame implements ActionListener,
     } else {
         errorMessage = "Ocorreu um erro ao processar os dados da conta.";
     }
-    JOptionPane.showMessageDialog(rootPane, errorMessage, "Erro", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(rootPane, errorMessage, 
+            "Erro", JOptionPane.ERROR_MESSAGE);
 
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -302,11 +313,13 @@ public class CRUDEstudante extends javax.swing.JFrame implements ActionListener,
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
             controllerEstudante.remove( tableResult.getSelectedRow());
-            JOptionPane.showMessageDialog(null, "Operação bem-sucedida!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Operação bem-sucedida!",
+                    "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             ActualizarDados();
             clean();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro. Tente novamente.", 
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -319,6 +332,7 @@ public class CRUDEstudante extends javax.swing.JFrame implements ActionListener,
         btnEliminar.setEnabled(false);    
         txtCodigo.setEnabled(true);
     }
+    
     //Cancelar
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         clean();
@@ -328,19 +342,23 @@ public class CRUDEstudante extends javax.swing.JFrame implements ActionListener,
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
          try {
             if(txtCodigo.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira o codigo de estudnte", TAG, HEIGHT);                
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Insira o codigo de estudnte", TAG, HEIGHT);                
                 return;
             }
             if(txtNome.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira o nome do estudante", TAG, HEIGHT);
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Insira o nome do estudante", TAG, HEIGHT);
                 return;
             }
             if(txtNota1.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira a primeira nota", TAG, HEIGHT);
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Insira a primeira nota", TAG, HEIGHT);
                 return;
             }
             if(txtNota2.getText().isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Insira a segunda nota", TAG, HEIGHT);
+                JOptionPane.showMessageDialog(rootPane, 
+                        "Insira a segunda nota", TAG, HEIGHT);
                 return;
             }
             
@@ -353,7 +371,8 @@ public class CRUDEstudante extends javax.swing.JFrame implements ActionListener,
             ActualizarDados();
             clean();
          }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro. Tente novamente.",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 

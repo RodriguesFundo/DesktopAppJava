@@ -1,9 +1,6 @@
-package POOA.GestaoEstudantes;
+package POOA.GestaoEstudantes.Control;
 
-/**
- *
- * @author dr. Fundo
- */
+import POOA.GestaoEstudantes.Model.Estudante;
 import java.util.*;
 import javax.swing.JOptionPane;
 public class ControllerEstudante {
@@ -12,12 +9,15 @@ public class ControllerEstudante {
     public void add(int codigo, String nome, double nota1, double nota2) {
         for (Estudante e : estudantes) {
             if (e.getCodigo() == codigo) {
-                JOptionPane.showMessageDialog(null, "O código de estudante já está em uso.", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, 
+                        "O código de estudante já está em uso.", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
         }
         if (nota1 < 0 || nota1 > 20 || nota2 < 0 || nota2 > 20) {
-            JOptionPane.showMessageDialog(null, "As notas devem estar entre 0 e 20.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "As notas devem estar entre 0 e 20.", 
+                    "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         estudantes.add(new Estudante(codigo, nome, nota1, nota2));
@@ -31,7 +31,8 @@ public class ControllerEstudante {
     public void edit(int posicao, int codigo, String nome, double nota1, double nota2){
         Estudante e = estudantes.get(posicao);
         if (nota1 < 0 || nota1 > 20 || nota2 < 0 || nota2 > 20) {
-            JOptionPane.showMessageDialog(null, "As notas devem estar entre 0 e 20.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "As notas devem estar entre 0 e 20.", 
+                    "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
         e.setCodigo(codigo);

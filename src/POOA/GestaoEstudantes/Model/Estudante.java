@@ -1,4 +1,4 @@
-package POOA.GestaoEstudantes;
+package POOA.GestaoEstudantes.Model;
 
 import java.io.Serializable;
 
