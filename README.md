@@ -3,5 +3,5 @@
 
 Desktop applications using: 
 
-* <p> <Strong>Java</Strong> programming language</p> 
+* <p> <Strong>Java</Strong> programming language ☕</p> 
 * <p> NetBeans IDE </p>
